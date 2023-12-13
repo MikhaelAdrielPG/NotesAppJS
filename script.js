@@ -11,13 +11,8 @@ function clearTodoList() {
     }
 }
 
-function displayTodoList(){
-    clearTodoList();
-
-    for (let index = 0; index < todolist.length; index++) {
-        const todo = todolist[index];
-
-        const tr = document.createElement("tr");
+function addTodoList(todo) {
+    const tr = document.createElement("tr");
         const tdButton = document.createElement("td");
         tr.appendChild(tdButton);
 
@@ -32,6 +27,19 @@ function displayTodoList(){
 
         const todolistBody = document.getElementById("todolistBody");
         todolistBody.appendChild(tr);
+}
+
+function displayTodoList(){
+    clearTodoList();
+
+    for (let index = 0; index < todolist.length; index++) {
+        const todo = todolist[index];
+
+        const searchText = document.getElementById("search").value.toLowerCase();
+
+        if (todo.toLowerCase().includes(searchText)) {
+            addTodoList(todo);
+        }
     }
 }
 
@@ -46,5 +54,13 @@ document.forms['todoForm'].onsubmit = function (event) {
     console.log(todolist);
     displayTodoList();
 };
+
+const searchInput = document.getElementById("search");
+searchInput.onkeyup = function () {
+    displayTodoList();
+}
+searchInput.onkeydown = function () {
+    displayTodoList();
+}
 
 displayTodoList();
