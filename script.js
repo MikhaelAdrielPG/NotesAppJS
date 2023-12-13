@@ -18,23 +18,23 @@ function removeTodoList(index) {
 
 function addTodoList(index, todo) {
     const tr = document.createElement("tr");
-        const tdButton = document.createElement("td");
-        tr.appendChild(tdButton);
+    const tdButton = document.createElement("td");
+    tr.appendChild(tdButton);
 
-        const buttonDone = document.createElement("input");
-        buttonDone.type = "button";
-        buttonDone.value = "Done";
-        buttonDone.onclick = function () {
-            removeTodoList(index);
-        }
-        tdButton.appendChild(buttonDone);
-        
-        const tdTodo = document.createElement("td");
-        tdTodo.textContent = todo;
-        tr.appendChild(tdTodo);
+    const buttonDone = document.createElement("input");
+    buttonDone.type = "button";
+    buttonDone.value = "Delete";
+    buttonDone.onclick = function () {
+        removeTodoList(index);
+    }
+    tdButton.appendChild(buttonDone);
+    
+    const tdTodo = document.createElement("td");
+    tdTodo.textContent = todo;
+    tr.appendChild(tdTodo);
 
-        const todolistBody = document.getElementById("todolistBody");
-        todolistBody.appendChild(tr);
+    const todolistBody = document.getElementById("todolistBody");
+    todolistBody.appendChild(tr);
 }
 
 function displayTodoList(){
@@ -54,13 +54,17 @@ function displayTodoList(){
 document.forms['todoForm'].onsubmit = function (event) {
     event.preventDefault();
 
-    const todo = document.forms['todoForm']['todo'].value;
-    todolist.push(todo);
+    const todoInput = document.forms['todoForm']['todo'];
+    const todo = todoInput.value.trim(); 
 
-    document.forms['todoForm'].reset();
+    if (todo !== '') {
+        todolist.push(todo);
+        todoInput.value = ''; 
 
-    console.log(todolist);
-    displayTodoList();
+        displayTodoList();
+    } else {
+        alert('Todo tidak boleh kosong!'); 
+    }
 };
 
 const searchInput = document.getElementById("search");

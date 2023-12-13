@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Notes</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
     <form name="todoForm">
         <table>
             <tbody>
                 <tr>
-                    <td><label for="todo">Todo</label></td>
+                    <td><label for="todo">Note</label></td>
                     <td><input type="text" id="todo" name="todo"></td>
                 </tr>
                 <tr>
@@ -22,18 +22,16 @@
         </table>
     </form>
 
-    <h1>TodoList</h1>
+    <h1>Notes</h1>
 
     <table>
         <thead>
-            <th>Filer</th>
-            <th><input type="text" name="search" id="search"></th>
+            <tr>
+                <th>Filter</th>
+                <th><input type="text" name="search" id="search"></th>
+            </tr>
         </thead>
         <tbody id="todolistBody">
-            <tr>
-                <td><input type="button" value="Done"></td>
-                <td>Todo Description</td>
-            </tr>
         </tbody>
     </table>
 
